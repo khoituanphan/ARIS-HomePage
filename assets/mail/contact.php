@@ -1,4 +1,9 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo 'Method Not Allowed';
+    exit;
+}
 
 if(!$_POST) exit;
 
@@ -69,6 +74,7 @@ $headers .= "MIME-Version: 1.0" . PHP_EOL;
 $headers .= "Content-type: text/plain; charset=utf-8" . PHP_EOL;
 $headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
 
+
 if(mail($address, $e_subject, $msg, $headers)) {
 
 	// Email has sent successfully, echo a success page.
@@ -83,3 +89,19 @@ if(mail($address, $e_subject, $msg, $headers)) {
 	echo 'ERROR!';
 
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['email'])) {
+        $text = $email . "\n";
+        $fp = fopen('emails.txt', 'a+');
+        if (fwrite($fp, $text)) {
+            echo 'Email Saved!';
+        } else {
+            echo 'Error saving email.';
+        }
+        fclose($fp);
+	} else {
+		http_response_code(405);
+		echo 'Method Not Allowed';
+	}
+};

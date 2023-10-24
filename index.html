@@ -134,10 +134,10 @@
                             Join the waitlist now to become one of the earliest users of our platform.
                         </p>
                         <div class="f-item newsletter secondary">
-                            <form action="#">
-                                <input type="email" placeholder="Your Email" class="form-control" name="email">
-                                <button type="submit">I'm in</button>  
-                            </form>
+                            <form class="emailForm" method="POST" action="assets/mail/contact.php">
+                                <input class="email" placeholder="Your Email" name="email" required>
+                                <button type="submit">I'm in</button>
+                            </form>                            
                         </div>
                     </div>
                 </div>
@@ -183,6 +183,6 @@
     <script src="assets/js/validnavs.js"></script>
     <script src="assets/js/loopcounter.js"></script>
     <script src="assets/js/main.js"></script>
-
+    
 </body>
 </html>
