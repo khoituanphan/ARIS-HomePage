@@ -134,7 +134,7 @@
                             Join the waitlist now to become one of the earliest users of our platform.
                         </p>
                         <div class="f-item newsletter secondary">
-                            <form class="emailForm">
+                            <form class="emailForm" method= "POST" action= "save.php">
                                 <input class="email" placeholder="Your Email" name="email" required>
                                 <input type="submit" name="submit" value="Submit">
                             </form>                            
@@ -190,11 +190,3 @@
 </body>
 </html>
 
-<?php
-        if(isset($_POST["submit"]))  //check submit button is pressed
-        {
-        $email = $_POST["email"];  // get name from URL
-        $file = Fopen("db.txt","a+"); //create a file if not exists
-        fwrite($file,"\n".$email); // fwrite(file_object, data to store);
-        }
-?>
