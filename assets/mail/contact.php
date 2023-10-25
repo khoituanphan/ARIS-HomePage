@@ -90,18 +90,4 @@ if(mail($address, $e_subject, $msg, $headers)) {
 
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['email'])) {
-        $text = $email . "\n";
-        $fp = fopen('emails.txt', 'a+');
-        if (fwrite($fp, $text)) {
-            echo 'Email Saved!';
-        } else {
-            echo 'Error saving email.';
-        }
-        fclose($fp);
-	} else {
-		http_response_code(405);
-		echo 'Method Not Allowed';
-	}
-};
+
